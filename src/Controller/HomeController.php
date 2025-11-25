@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Controller;
 
@@ -12,13 +12,24 @@ final class HomeController extends AbstractController
     public function index(): Response
     {
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+           'controller_name' => 'HomeController',
         ]);
     }
+
     #[Route('/offers', name: 'app_offers')]
-public function offers(): Response
-{
-    return $this->render('home/offers.html.twig');
-}
+    public function offers(): Response
+    {
+        return $this->render('home/offers.html.twig');
+    }
+
+    #[Route('/payment', name: 'app_payment')]
+    public function payment(): Response    
+    {
+        return $this->render('home/payment.html.twig');
+    }
+
+
+
+ 
 
 }
