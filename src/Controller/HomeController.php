@@ -4,21 +4,37 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\TripDay;
 
-final class HomeController extends AbstractController
+class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+        return $this->render('home/index.html.twig');
+    }
+
+    #[Route('/offers', name: 'app_offers')]
+    public function offers(ManagerRegistry $doctrine): Response
+    {
+        $tripDays = $doctrine->getRepository(TripDay::class)
+            ->findBy([], ['destination' => 'ASC']);
+
+        $offers = [];
+        foreach ($tripDays as $day) {
+            if (!isset($offers[$day->getDestination()])) {
+                $offers[$day->getDestination()] = [
+                    'destination' => $day->getDestination(),
+                    'price' => $day->getPrice(),
+                    'image' => $day->getImage(),
+                ];
+            }
+        }
+
+        return $this->render('home/offers.html.twig', [
+            'offers' => $offers,
         ]);
     }
-    #[Route('/offers', name: 'app_offers')]
-public function offers(): Response
-{
-    return $this->render('home/offers.html.twig');
-}
-
 }

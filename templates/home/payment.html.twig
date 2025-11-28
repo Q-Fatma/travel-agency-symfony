@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement - {{ destination }}{% endblock %}
+
+{% block body %}
+<h1>Paiement pour {{ destination }}</h1>
+
+<p>Prix total : €{{ price }}</p>
+
+<form method="post" action="#">
+    <button type="submit" class="btn btn-success btn-lg">Confirmer le paiement</button>
+</form>
+{% endblock %}
