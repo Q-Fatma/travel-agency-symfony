@@ -4,39 +4,37 @@
 
 {% block body %}
 <header class="top-area">
-			<div class="header-area">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-2">
-							<div class="logo">
-								<a href="{{ path('app_home') }}">
-									TekUP<span>Travel</span>
-								</a>
-							</div><!-- /.logo-->
-						</div><!-- /.col-->
-				</div>		
-			</div><!-- /.header-area -->
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="logo">
+                        <a href="{{ path('app_home') }}">
+                            TekUP<span>Travel</span>
+                        </a>
+                    </div><!-- /.logo-->
+                </div><!-- /.col-->
+            </div>      
+        </div>
+    </div><!-- /.header-area -->
+</header><!-- /.top-area-->
 
-		</header><!-- /.top-area-->
 <style>
-    body {
-        background: url('{{ asset('assets/images/home/banner.jpg') }}') no-repeat center center fixed;
-        background-size: cover;
-        min-height: 100vh;
-        color: white; /* default text color over background */
-    }
-
-    /* Optional: add overlay effect to make text readable */
-    .page-overlay {
-        background-color: rgba(0,0,0,0.4);
-        min-height: 100vh;
-        padding: 80px 0;
-    }
-
-    .card {
-        background-color: rgba(255, 255, 255, 0.58);
-        border-radius: 15px;
-    }
+body {
+    background: url('{{ asset('assets/images/home/banner.jpg') }}') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: white;
+}
+.page-overlay {
+    background-color: rgba(0,0,0,0.4);
+    min-height: 100vh;
+    padding: 80px 0;
+}
+.card {
+    background-color: rgba(255, 255, 255, 0.58);
+    border-radius: 15px;
+}
 </style>
 
 <div class="page-overlay">
@@ -44,111 +42,96 @@
         <h1 class="display-3 mb-5 text-center" style="font-weight: bold;">Our Travel Offers</h1>
 
         <div class="offers-list">
-            {% set offers = [
-                {'title':'Paris Trip', 'days':'3 nights, 4 days', 'price':'€500', 'rooms':'1 chambre', 'image':'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80'},
-                {'title':'Istanbul Adventure', 'days':'5 nights, 6 days', 'price':'€750', 'rooms':'Double', 'image':'https://www.momondo.de/discover/wp-content/uploads/sites/264/2022/12/DEST_TURKEY_ISTANBUL_GALATA_TOWER_GettyImages-1026029900-1536x1050.jpg'},
-                {'title':'London Escape', 'days':'4 nights, 5 days', 'price':'€650', 'rooms':'1 chambre', 'image':'https://www.celebritycruises.com/content/dam/celebrity/city-stays/1040-london-city-stays-overall-80-opacity.jpg'},
-                {'title':'Rome Getaway', 'days':'3 nights, 4 days', 'price':'€550', 'rooms':'Double', 'image':'https://cdn-imgix.headout.com/media/images/bdaf8794085cccfa043f5c229154412d-19658-rome-coliseum--roman-forum-and-palatine-hill-guided-tour-48hrs-city-sightseeing-09.jpg'},
-                {'title':'Barcelona Experience', 'days':'4 nights, 5 days', 'price':'€600', 'rooms':'1 chambre', 'image':'https://cdn.getyourguide.com/img/tour/247fa25a3f5a618081f2916d64266b61225b2919cb3c20c36e94ebb6746c2336.jpg/145.jpg'}
-            ] %}
-
-            {% for offer in offers %}
+            {% for key, offer in offers %}
                 <div class="card mb-5 shadow-lg">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-4">
-                            <img src="{{ offer.image }}" class="img-fluid rounded-start" alt="{{ offer.title }}">
+                            <img src="{{ offer.image }}" class="img-fluid rounded-start" alt="{{ offer.destination }}">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h2 class="card-title" style="font-size: 2rem; font-weight: bold;">{{ offer.title }}</h2>
+                                <h2 class="card-title" style="font-size: 2rem; font-weight: bold;">{{ offer.destination }}</h2>
                                 <p class="card-text" style="font-size: 1.2rem;">
-                                    {{ offer.days }} – <strong>{{ offer.price }}</strong> – <em>{{ offer.rooms }}</em>
+                                    Prix: €{{ offer.price }}
                                 </p>
+<<<<<<< HEAD:templates/offer/offer.html.twig
                                 <a href="{{path('app_payment')}}" class="btn btn-primary btn-lg">Book Now</a>
+=======
+                                <a href="{{ path('app_description', {'destination': offer.destination}) }}" class="btn btn-primary btn-lg">Book Now</a>
+>>>>>>> 63e7d9bc53f59db33279fe2674b2957f7ff5b18d:templates/home/offers.html.twig
                             </div>
                         </div>
                     </div>
                 </div>
+            {% else %}
+                <p>Aucune offre disponible pour le moment.</p>
             {% endfor %}
         </div>
     </div>
 </div>
-<!-- footer-copyright start -->
-		<footer  class="footer-copyright">
-			<div class="container">
-				<div class="footer-content">
-					<div class="row">
 
-						<div class="col-sm-3">
-							<div class="single-footer-item">
-								<div class="footer-logo">
-									<a href="index.html">
-										tour<span>Nest</span>
-									</a>
-									<p>
-										best travel agency
-									</p>
-								</div>
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
-
-						<div class="col-sm-3">
-							<div class="single-footer-item">
-								<h2>link</h2>
-								<div class="single-footer-txt">
-									<p><a href="#">home</a></p>
-									<p><a href="#">destination</a></p>
-									<p><a href="#">spacial packages</a></p>
-									<p><a href="#">special offers</a></p>
-									<p><a href="#">blog</a></p>
-									<p><a href="#">contacts</a></p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-
-						</div><!--/.col-->
-
-						<div class="col-sm-3">
-							<div class="single-footer-item">
-								<h2>popular destination</h2>
-								<div class="single-footer-txt">
-									<p><a href="#">china</a></p>
-									<p><a href="#">venezuela</a></p>
-									<p><a href="#">brazil</a></p>
-									<p><a href="#">australia</a></p>
-									<p><a href="#">london</a></p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
-
-						<div class="col-sm-3">
-							<div class="single-footer-item text-center">
-								<h2 class="text-left">contacts</h2>
-								<div class="single-footer-txt text-left">
-									<p>+216 24 915 081</p>
-									<p class="foot-email"><a href="#">info@TekUP.com</a></p>
-									<p>Ariana ,Gazela</p>
-									<p>Ariana, Tunis</p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
-
-					</div><!--/.row-->
-
-				</div><!--/.footer-content-->
-				<hr>
-				<div class="foot-icons ">
-					<ul class="footer-social-links list-inline list-unstyled">
-		                <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a></li>
-		                <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a></li>
-		                <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a></li>
-		        	</ul>
-		        	<p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
-
-		        </div><!--/.foot-icons-->
-				<div id="scroll-Top">
-					<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
-				</div><!--/.scroll-Top-->
-			</div><!-- /.container-->
-
-		</footer><!-- /.footer-copyright-->
+<footer class="footer-copyright">
+    <div class="container">
+        <div class="footer-content">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="single-footer-item">
+                        <div class="footer-logo">
+                            <a href="index.html">tour<span>Nest</span></a>
+                            <p>best travel agency</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="single-footer-item">
+                        <h2>link</h2>
+                        <div class="single-footer-txt">
+                            <p><a href="#">home</a></p>
+                            <p><a href="#">destination</a></p>
+                            <p><a href="#">special packages</a></p>
+                            <p><a href="#">special offers</a></p>
+                            <p><a href="#">blog</a></p>
+                            <p><a href="#">contacts</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="single-footer-item">
+                        <h2>popular destination</h2>
+                        <div class="single-footer-txt">
+                            <p><a href="#">china</a></p>
+                            <p><a href="#">venezuela</a></p>
+                            <p><a href="#">brazil</a></p>
+                            <p><a href="#">australia</a></p>
+                            <p><a href="#">london</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="single-footer-item text-center">
+                        <h2 class="text-left">contacts</h2>
+                        <div class="single-footer-txt text-left">
+                            <p>+216 24 915 081</p>
+                            <p class="foot-email"><a href="#">info@TekUP.com</a></p>
+                            <p>Ariana ,Gazela</p>
+                            <p>Ariana, Tunis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="foot-icons">
+            <ul class="footer-social-links list-inline list-unstyled">
+                <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+            <p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
+        </div>
+        <div id="scroll-Top">
+            <i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+        </div>
+    </div>
+</footer>
 {% endblock %}
