@@ -52,32 +52,33 @@
             <h2 style="margin-bottom:25px;">Payment Details</h2>
 
             <!-- STATIC FORM — NO ROUTE -->
-            <form method="POST">
+            <form method="POST" action="{{ path('app_payment_confirm') }}">
 
                 <!-- Personal Info -->
-                <h4 style="margin-bottom:15px;">Personal Information</h4>
+                 <h4 style="margin-bottom:15px; font-weight:bold;">🧍 Personal Information</h4>
+
 
                 <div class="row">
                     <div class="col-md-6" style="margin-bottom:20px;">
                         <label>First Name</label>
-                        <input type="text" name="firstName" required class="form-control">
+                        <input type="text" name="firstName" required class="form-control" placeholder="Enter your first name">
                     </div>
 
                     <div class="col-md-6" style="margin-bottom:20px;">
                         <label>Last Name</label>
-                        <input type="text" name="lastName" required class="form-control">
+                        <input type="text" name="lastName" required class="form-control" placeholder="Enter your last name">
                     </div>
 
                     <div class="col-md-12" style="margin-bottom:20px;">
                         <label>Email</label>
-                        <input type="email" name="email" required class="form-control">
+                        <input type="email" name="email" required class="form-control" placeholder="example@email.com">
                     </div>
                 </div>
 
                 <hr style="margin: 35px 0;">
 
                 <!-- Payment Info -->
-                <h4 style="margin-bottom:15px;">Card Information</h4>
+                <h4 style="margin-bottom:15px; font-weight:bold;">💳 Card Information</h4>
 
                 <div class="row">
                     <div class="col-md-12" style="margin-bottom:20px;">
@@ -92,7 +93,7 @@
 
                     <div class="col-md-6" style="margin-bottom:20px;">
                         <label>CVC</label>
-                        <input type="text" name="cvc" maxlength="3" required class="form-control">
+                        <input type="text" name="cvc" maxlength="3" required class="form-control" placeholder="123">
                     </div>
                 </div>
 
@@ -103,7 +104,7 @@
 
                 <div style="background:#f1f1f1; padding:20px; border-radius:8px; margin-bottom:25px;">
                     <p style="margin:0; font-size:18px;">
-                        <strong>Total:</strong>  totalPrice  TND
+                        <strong>Total:</strong>   totalPrice  TND
                     </p>
                 </div>
 

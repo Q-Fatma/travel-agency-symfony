@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payment Success{% endblock %}
+
+{% block body %}
+
+<style>
+.success-container {
+    max-width: 700px;
+    margin: 80px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+}
+
+.success-icon {
+    font-size: 60px;
+    color: #4CAF50;
+}
+
+.details-box {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.details-grid {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.details-grid div {
+    width: 45%;
+}
+
+.ok-btn {
+    margin-top: 25px;
+    padding: 10px 40px;
+    background: #e3e7ebff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+}
+.ok-btn:hover {
+    background: #ddd;
+}
+</style>
+
+
+<div class="success-container">
+
+    <div class="success-icon">✔</div>
+
+    <h1 style="color:#4CAF50; margin-top:15px;">Payment Successful!</h1>
+
+    <h3>Thank you! Your payment of {{ amountTotal }} TND has been received.</h3>
+
+    <p style="margin-top:10px;">
+        Order ID:  {{orderId }} | Transaction ID:  {{transactionId }}
+    </p>
+
+    <h3 style="margin-top:30px;">Payment Details</h3>
+
+    <div class="details-box">
+        <div class="details-grid">
+            <div>
+                <p><strong>Total Amount:</strong>  {{amountTotal}}  TND</p>
+                <p><strong>Paid via Incentives:</strong>  {{amountIncentives }} TND</p>
+            </div>
+
+            <div>
+                <p><strong>Paid via Account Balance:</strong>  {{amountBalance }} TND</p>
+                <p><strong>Paid via Online Transaction:</strong> {{ amountOnline }} TND</p>
+            </div>
+        </div>
+    </div>
+
+    <p style="margin-top:20px;">
+        Please wait a moment for the amount to reflect in your TekUP Travel account.
+    </p>
+
+    <p style="color:gray; font-size:14px;">
+        For help, contact us at info@tekup.com
+    </p>
+
+    <button class="ok-btn" onclick="window.location.href='{{ path('app_home') }}'">OK</button>
+
+</div>
+
+{% endblock %}
