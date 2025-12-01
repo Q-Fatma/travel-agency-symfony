@@ -15,9 +15,6 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
-<<<<<<< HEAD
-=======
-
     #[Route('/offers', name: 'app_offers')]
     public function offers(ManagerRegistry $doctrine): Response
     {
@@ -45,5 +42,4 @@ class HomeController extends AbstractController
     {
         return $this->render('home/payment.html.twig');
     }
->>>>>>> 63e7d9bc53f59db33279fe2674b2957f7ff5b18d
 }

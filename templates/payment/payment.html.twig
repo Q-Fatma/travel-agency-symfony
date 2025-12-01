@@ -1,24 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paiement - {{ destination }}{% endblock %}
+{% block title %}Payment {% endblock %}
 
 {% block body %}
-<h1>Paiement pour {{ destination }}</h1>
 
-<p>Prix total : €{{ price }}</p>
-
-<<<<<<< HEAD:templates/payment/payment.html.twig
-    /* Optional: add overlay effect to make text readable */
-    .page-overlay {
-        background-color: rgba(0,0,0,0.4);
-        min-height: 100vh;
-        padding: 80px 0;
-    }
-
-    .card {
-        background-color: rgba(255, 255, 255, 0.58);
-        border-radius: 15px;
-    }
 </style>
 <!-- Payment Form Section -->
 <section class="payment-section" style="padding:60px 0; background:#f8f9fa;">
@@ -34,8 +19,7 @@
             <h2 style="margin-bottom:25px;">Payment Details</h2>
 
             <!-- STATIC FORM — NO ROUTE -->
-            <form method="POST" action="{{ path('app_payment_confirm') }}">
-
+           <form method="post" action="{{ path('app_payment') }}">
                 <!-- Personal Info -->
                  <h4 style="margin-bottom:15px; font-weight:bold;">🧍 Personal Information</h4>
 
@@ -103,89 +87,4 @@
         </div>
     </div>
 </section>
-
-	<!-- footer-copyright start -->
-		<footer  class="footer-copyright">
-			<div class="container">
-				<div class="footer-content">
-					<div class="row">
-
-						<div class="col-sm-3">
-							<div class="single-footer-item">
-								<div class="footer-logo">
-									<a href="index.html">
-										tour<span>Nest</span>
-									</a>
-									<p>
-										best travel agency
-									</p>
-								</div>
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
-
-						<div class="col-sm-3">
-							<div class="single-footer-item">
-								<h2>link</h2>
-								<div class="single-footer-txt">
-									<p><a href="#">home</a></p>
-									<p><a href="#">destination</a></p>
-									<p><a href="#">spacial packages</a></p>
-									<p><a href="#">special offers</a></p>
-									<p><a href="#">blog</a></p>
-									<p><a href="#">contacts</a></p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-
-						</div><!--/.col-->
-
-						<div class="col-sm-3">
-							<div class="single-footer-item">
-								<h2>popular destination</h2>
-								<div class="single-footer-txt">
-									<p><a href="#">china</a></p>
-									<p><a href="#">venezuela</a></p>
-									<p><a href="#">brazil</a></p>
-									<p><a href="#">australia</a></p>
-									<p><a href="#">london</a></p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
-
-						<div class="col-sm-3">
-							<div class="single-footer-item text-center">
-								<h2 class="text-left">contacts</h2>
-								<div class="single-footer-txt text-left">
-									<p>+216 24 915 081</p>
-									<p class="foot-email"><a href="#">info@TekUP.com</a></p>
-									<p>Ariana ,Gazela</p>
-									<p>Ariana, Tunis</p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
-
-					</div><!--/.row-->
-
-				</div><!--/.footer-content-->
-				<hr>
-				<div class="foot-icons ">
-					<ul class="footer-social-links list-inline list-unstyled">
-		                <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a></li>
-		                <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a></li>
-		                <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a></li>
-		        	</ul>
-		        	<p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
-
-		        </div><!--/.foot-icons-->
-				<div id="scroll-Top">
-					<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
-				</div><!--/.scroll-Top-->
-			</div><!-- /.container-->
-
-		</footer><!-- /.footer-copyright-->
 {% endblock %}
-=======
-<form method="post" action="#">
-    <button type="submit" class="btn btn-success btn-lg">Confirmer le paiement</button>
-</form>
-{% endblock %}
->>>>>>> 63e7d9bc53f59db33279fe2674b2957f7ff5b18d:templates/home/payment.html.twig

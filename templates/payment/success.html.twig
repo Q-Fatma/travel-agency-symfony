@@ -3,6 +3,11 @@
 {% block title %}Payment Success{% endblock %}
 
 {% block body %}
+<style>
+body {
+    background: white !important;
+}
+</style>
 
 <style>
 .success-container {
@@ -41,7 +46,7 @@
 .ok-btn {
     margin-top: 25px;
     padding: 10px 40px;
-    background: #e3e7ebff;
+    background: #378de3ff;
     color: white;
     border: none;
     border-radius: 6px;
@@ -59,10 +64,10 @@
 
     <h1 style="color:#4CAF50; margin-top:15px;">Payment Successful!</h1>
 
-    <h3>Thank you! Your payment of {{ amountTotal }} TND has been received.</h3>
+    <h3>Thank you! Your payments of {{payment.amountTotal}} TND has been received.</h3>
 
     <p style="margin-top:10px;">
-        Order ID:  {{orderId }} | Transaction ID:  {{transactionId }}
+        Order ID: {{ payment.orderId}} | Transaction ID: {{ payment.transactionId }}
     </p>
 
     <h3 style="margin-top:30px;">Payment Details</h3>
@@ -70,13 +75,13 @@
     <div class="details-box">
         <div class="details-grid">
             <div>
-                <p><strong>Total Amount:</strong>  {{amountTotal}}  TND</p>
-                <p><strong>Paid via Incentives:</strong>  {{amountIncentives }} TND</p>
+                <p><strong>Total Amount:</strong> {{ payment.amountTotal}} TND</p>
+                <p><strong>Paid via Incentives:</strong>  {{payment.amountIncentives}} TND</p>
             </div>
 
             <div>
-                <p><strong>Paid via Account Balance:</strong>  {{amountBalance }} TND</p>
-                <p><strong>Paid via Online Transaction:</strong> {{ amountOnline }} TND</p>
+                <p><strong>Paid via Account Balance:</strong>  {{payment.amountBalance }} TND</p>
+                <p><strong>Paid via Online Transaction:</strong>  {{payment.amountOnline}}  TND</p>
             </div>
         </div>
     </div>

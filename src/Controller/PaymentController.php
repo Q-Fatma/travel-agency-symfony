@@ -2,27 +2,40 @@
 
 namespace App\Controller;
 
+use App\Entity\SuccessPayment;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 final class PaymentController extends AbstractController
 {
     #[Route('/payment', name: 'app_payment')]
-    public function payment(): Response
+    public function payment(Request $request, EntityManagerInterface $em): Response
     {
-        // Show the payment page
-        return $this->render('payment/payment.html.twig', [
-            'controller_name' => 'PaymentController',
-        ]);
-    }
+        if ($request->isMethod('POST')) {
+            // Create a new SuccessPayment entity
+            $payment = new SuccessPayment();
 
-    #[Route('/payment/confirm', name: 'app_payment_confirm', methods: ['POST'])]
-    public function confirm(): Response
-    {
-        // You can process payment here if needed
+            // Get form data
+            $payment->setOrderId($request->request->get('orderId', 'ORD'.rand(100,999)));
+            $payment->setTransactionId('TXN'.rand(1000,9999));
+            $payment->setAmountTotal((float)$request->request->get('amountTotal', 0));
+            $payment->setAmountIncentives((float)$request->request->get('amountIncentives', 0));
+            $payment->setAmountBalance((float)$request->request->get('amountBalance', 0));
+            $payment->setAmountOnline((float)$request->request->get('amountOnline', 0));
+            $payment->setStatus('Success');
 
-        // Redirect to success page
-        return $this->redirectToRoute('app_success_payment');
+            // Save to database
+            $em->persist($payment);
+            $em->flush();
+
+            // Redirect to success payment page
+            return $this->redirectToRoute('app_success_payment');
+        }
+
+        return $this->render('payment/payment.html.twig');
     }
 }
+

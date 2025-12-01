@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\successPayment;
+use App\Entity\SuccessPayment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -13,7 +13,7 @@ class SuccessPaymentRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, successPayment::class);
+        parent::__construct($registry, SuccessPayment::class);
     }
 
     //    /**
